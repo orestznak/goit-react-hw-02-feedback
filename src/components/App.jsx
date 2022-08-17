@@ -12,34 +12,48 @@ export class  App extends Component {
   }
 
   countTotalFeedback = () => {
-    return this.state.good+this.state.neutral+this.state.bad;
+    return this.state.good + this.state.neutral + this.state.bad;
   }
   countPositiveFeedbackPercentage = () => {
-    return this.state.good/this.total*100;
+    return this.state.good/this.countTotalFeedback()*100;
   }
+
+  // onLeaveFeedback = () => {
+  //   this.setState({
+  //     [option] : this.state[option] + 1
+  //   }
+
+  //   )
+  // }
+  // onLeaveFeedback={() => this.onLeaveFeedback(label)}
+
+    
+    
 
   render(){
     const { good,neutral,bad } = this.state;
+    const options = Object.keys(this.state);
+  
 
     return(  
       <div>
         <h2>Please leave feedback</h2>
-      <FeedbackOptions options={['good','neutral','bad']}></FeedbackOptions>
+      <FeedbackOptions options={options} ></FeedbackOptions>
       
       <h2>Statistics</h2>
       <Statistics 
         good={good} 
         neutral={neutral} 
         bad={bad} 
-        total={()=>this.countTotalFeedback} 
-        positivePercentage={this.countPositiveFeedbackPercentage}>
+        total={this.countTotalFeedback()} 
+        positivePercentage={this.countPositiveFeedbackPercentage()}>
       </Statistics>
 
       </div>
       )
   }
-}
 
+}
 /* <Section title=>
         <FeedbackOptions options={['good','neutral','bad']} onLeaveFeedback={}></FeedbackOptions>     
       </Section>    

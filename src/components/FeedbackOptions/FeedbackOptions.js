@@ -1,11 +1,13 @@
 import { Box } from "components/Box"
 
-export const FeedbackOptions = ({options}, idx) => {
+export const FeedbackOptions = ({options}, idx,) => {
     return(
         <Box as="div" display="flex">
             {options.map(option => (
                 <button  
-                key={idx}              
+                type="button"
+                key={idx} 
+                // onClick={onLeaveFeedback(option)}            onLeaveFeedback  
                     >{option}</button>
             )
             )}
