@@ -20,16 +20,11 @@ export class  App extends Component {
     return this.state.good/this.countTotalFeedback()*100;
   }
 
-  onLeaveFeedback = (e) => {
-    e.preventDefault();
-    const option = e.currentTarget.name;
-    console.log(option);
-    this.setState((prevState) => {
-      return {option : prevState.option + 1}
-    }
-
-    )
-  }
+  leaveFeedback =  e => {
+    this.setState(prevState => ({
+      [e.target.value]: prevState[e.target.value] + 1,
+    }));
+  };
 
   // onLeaveFeedback={() => this.onLeaveFeedback(label)}
 
@@ -46,9 +41,9 @@ export class  App extends Component {
                 <button  
                 type="button"
                 key={option} 
-                name={option}
-                onClick={this.onLeaveFeedback}             
-                    >{option}</button>
+                value={option}
+                onClick={this.leaveFeedback}             
+                >{option}</button>
             )
             )}
         </Box>
