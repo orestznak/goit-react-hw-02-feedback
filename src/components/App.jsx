@@ -23,9 +23,9 @@ export class  App extends Component {
     : 0;
   }
 
-  leaveFeedback =  e => {
+  leaveFeedback = option => {
     this.setState(prevState => ({
-      [e.target.value]: prevState[e.target.value] + 1,
+      [option]: prevState[option] + 1,
     }));
   };
 

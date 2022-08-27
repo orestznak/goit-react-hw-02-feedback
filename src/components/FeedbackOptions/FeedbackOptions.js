@@ -8,10 +8,10 @@ export const FeedbackOptions = ({options,onLeaveFeedback}) => {
         <Box as="div" display="flex">
             {options.map(option => (
                 <Button  
-                type="button"
-                key={option} 
-                value={option}
-                onClick={onLeaveFeedback}             
+                    type="button"
+                    key={option} 
+                    value={option}
+                    onClick={() => onLeaveFeedback(option)}             
                 >{option}
                 </Button>
             )
